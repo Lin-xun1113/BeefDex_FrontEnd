@@ -47,7 +47,7 @@ function App() {
                 <div className="network-info">
                   <span className="network-label">网络:</span>
                   <span className={`network-status ${isCorrectNetwork ? 'correct' : 'incorrect'}`}>
-                    {isCorrectNetwork ? 'Hardhat Local' : `Chain ID: ${chainId}`}
+                    {isCorrectNetwork ? 'Anvil Local' : `Chain ID: ${chainId}`}
                   </span>
                 </div>
                 <div className="button-group">
