@@ -1,10 +1,11 @@
 // 合约地址 - 需要根据实际部署的地址修改
 export const CONTRACTS = {
   // 这些地址需要在部署后更新
-  POOL: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0", // 示例地址
-  MANAGER: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9", // 示例地址
-  TOKEN0: "0x5FbDB2315678afecb367f032d93F642f64180aa3", // WETH 地址
-  TOKEN1: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512", // USDC 地址
+  POOL: "0x04C89607413713Ec9775E14b954286519d836FEf", // 示例地址
+  MANAGER: "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584", // 示例地址
+  QUOTER: "0x21dF544947ba3E8b3c32561399E88B52Dc8b2823", // Quoter 地址
+  TOKEN0: "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d", // WETH 地址
+  TOKEN1: "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6", // USDC 地址
 };
 
 // UniswapV3Pool ABI
@@ -22,7 +23,7 @@ export const POOL_ABI = [
   
   // 写入函数
   "function mint(address owner, int24 lowerTick, int24 upperTick, uint128 amount, bytes calldata data) returns (uint256 amount0, uint256 amount1)",
-  "function swap(address recipient, bytes calldata data) returns (int256 amount0, int256 amount1)",
+  "function swap(address recipient, bool zeroForOne, uint256 amountSpecified, bytes calldata data) returns (int256 amount0, int256 amount1)",
   
   // 事件
   "event Mint(address sender, address indexed owner, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount, uint256 amount0, uint256 amount1)",
@@ -32,9 +33,14 @@ export const POOL_ABI = [
 // UniswapV3Manager ABI
 export const MANAGER_ABI = [
   "function mint(address poolAddress_, int24 lowerTick, int24 upperTick, uint128 liquidity, bytes calldata data)",
-  "function swap(address poolAddress_, bytes calldata data)",
+  "function swap(address poolAddress_, bool zeroForOne, uint256 amountIn, bytes calldata data)",
   "function uniswapV3MintCallback(uint256 amount0, uint256 amount1, bytes calldata data)",
   "function uniswapV3SwapCallback(int256 amount0, int256 amount1, bytes calldata data)"
+];
+
+// UniswapV3Quoter ABI
+export const QUOTER_ABI = [
+  "function quote((address pool, uint256 amountIn, bool zeroForOne)) view returns (uint256 amountOut, uint160 sqrtPriceX96After, int24 tickAfter)"
 ];
 
 // ERC20 ABI

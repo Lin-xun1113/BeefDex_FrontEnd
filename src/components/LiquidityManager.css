@@ -1,0 +1,449 @@
+/* Liquidity Manager Styles */
+.liquidity-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.liquidity-card {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(19, 24, 35, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.liquidity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+.liquidity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 0;
+  margin-bottom: 24px;
+}
+
+.liquidity-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.refresh-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  color: #9CA3AF;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transform: rotate(180deg);
+}
+
+/* Pool Info */
+.pool-info {
+  padding: 0 24px 24px;
+}
+
+.pool-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9CA3AF;
+  margin: 0 0 16px 0;
+}
+
+.info-grid {
+  display: grid;
+  gap: 12px;
+  background: rgba(13, 17, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 14px;
+  color: #9CA3AF;
+}
+
+.info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: right;
+}
+
+/* Balance Section */
+.balance-section {
+  padding: 0 24px 24px;
+}
+
+.balance-section h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9CA3AF;
+  margin: 0 0 16px 0;
+}
+
+.balance-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.balance-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(13, 17, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.balance-item:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(13, 17, 28, 0.8);
+}
+
+.token-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.token-icon.weth {
+  background: linear-gradient(135deg, #627EEA 0%, #4A5ECC 100%);
+}
+
+.token-icon.usdc {
+  background: linear-gradient(135deg, #2775CA 0%, #1E5FA8 100%);
+}
+
+.balance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.token-name {
+  font-size: 14px;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.token-balance {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.mint-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.mint-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.mint-btn:disabled {
+  background: #374151;
+  color: #6B7280;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Liquidity Parameters */
+.liquidity-params {
+  padding: 0 24px 24px;
+}
+
+.liquidity-params h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9CA3AF;
+  margin: 0 0 16px 0;
+}
+
+.param-group {
+  margin-bottom: 16px;
+}
+
+.param-label {
+  display: block;
+  font-size: 14px;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.param-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(13, 17, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.param-input:focus {
+  border-color: rgba(255, 0, 122, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 0, 122, 0.1);
+}
+
+.param-input:hover {
+  background: rgba(13, 17, 28, 0.8);
+}
+
+.param-input::placeholder {
+  color: #4B5563;
+}
+
+/* Price Range */
+.price-range {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(13, 17, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
+.price-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-label {
+  font-size: 12px;
+  color: #9CA3AF;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.price-value {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Add Liquidity Button */
+.add-liquidity-btn {
+  width: calc(100% - 48px);
+  margin: 0 24px 24px;
+  padding: 16px;
+  background: linear-gradient(135deg, #FF007A 0%, #FF3B92 100%);
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 0, 122, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-liquidity-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.add-liquidity-btn:hover::before {
+  left: 100%;
+}
+
+.add-liquidity-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 122, 0.4);
+}
+
+.add-liquidity-btn:active {
+  transform: translateY(0);
+}
+
+.add-liquidity-btn:disabled {
+  background: #374151;
+  color: #6B7280;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Transaction Details */
+.tx-details {
+  margin: 0 24px 24px;
+  padding: 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  animation: slideIn 0.3s ease;
+}
+
+.tx-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #10B981;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tx-header button {
+  background: none;
+  border: none;
+  color: #10B981;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.tx-header button:hover {
+  opacity: 0.7;
+}
+
+.tx-link {
+  color: #10B981;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.3s ease;
+}
+
+.tx-link:hover {
+  gap: 8px;
+}
+
+/* Loading */
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .liquidity-container {
+    padding: 16px;
+  }
+
+  .liquidity-card {
+    max-width: 100%;
+  }
+
+  .balance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-range {
+    grid-template-columns: 1fr;
+  }
+}

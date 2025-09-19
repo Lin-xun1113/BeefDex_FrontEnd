@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useWeb3 } from './hooks/useWeb3';
-import LiquidityManager from './components/LiquidityManager';
-import SwapComponent from './components/SwapComponent';
+import LiquidityManager from './components/LiquidityManagerNew';
+import SwapComponent from './components/SwapComponentNew';
+import './index.css';
 import './App.css';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('swap');
 
   return (
-    <div className="App">
+    <div className="app">
       {/* Header */}
       <header className="app-header">
         <div className="header-content">

@@ -1,20 +1,45 @@
-/* App.css */
-
-.App {
-  text-align: center;
+/* App Styles */
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #333;
+  position: relative;
 }
 
-/* Header Styles */
-.app-header {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 2rem 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+/* Background Effects */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 0, 122, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(98, 126, 234, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
+.nav-container {
+  position: relative;
+  z-index: 10;
+  background: rgba(13, 17, 28, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .header-content {
@@ -81,15 +106,17 @@
 
 .account-label, .network-label {
   font-weight: 600;
-  color: #4a5568;
+  color: #9CA3AF;
 }
 
 .account-address {
   font-family: 'Monaco', 'Menlo', monospace;
-  background: #edf2f7;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .network-status {
@@ -100,13 +127,15 @@
 }
 
 .network-status.correct {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .network-status.incorrect {
-  background: #fed7d7;
-  color: #742a2a;
+  background: rgba(239, 68, 68, 0.2);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
 .button-group {
@@ -125,21 +154,25 @@
 }
 
 .switch-network-button {
-  background: #ed8936;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   color: white;
+  border-radius: 8px;
 }
 
 .switch-network-button:hover {
-  background: #dd6b20;
+  background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+  transform: translateY(-1px);
 }
 
 .disconnect-button {
-  background: #e53e3e;
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
   color: white;
+  border-radius: 8px;
 }
 
 .disconnect-button:hover {
-  background: #c53030;
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  transform: translateY(-1px);
 }
 
 /* Main Content */
@@ -224,9 +257,11 @@
 
 /* DEX Interface */
 .dex-interface {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(19, 24, 35, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   max-width: 800px;
   margin: 0 auto;
@@ -235,8 +270,8 @@
 /* Tab Navigation */
 .tab-navigation {
   display: flex;
-  background: #f7fafc;
-  border-bottom: 1px solid #e2e8f0;
+  background: rgba(13, 17, 28, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tab-button {
@@ -248,19 +283,19 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #718096;
+  color: #9CA3AF;
   border-bottom: 3px solid transparent;
 }
 
 .tab-button:hover {
-  background: #edf2f7;
-  color: #4a5568;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
 .tab-button.active {
-  background: white;
-  color: #4299e1;
-  border-bottom-color: #4299e1;
+  background: rgba(255, 0, 122, 0.1);
+  color: #FF007A;
+  border-bottom-color: #FF007A;
 }
 
 /* Tab Content */
