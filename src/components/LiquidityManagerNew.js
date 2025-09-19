@@ -70,10 +70,21 @@ const LiquidityManager = ({ signer, account }) => {
 
       console.log('正在铸造测试代币...');
       
-      const wethTx = await wethContract.mint(account, ethers.utils.parseEther('1000'));
-      const usdcTx = await usdcContract.mint(account, ethers.utils.parseEther('5000000'));
+      // 设置gas参数防止circuit breaker错误
+      const gasOptions = {
+        gasLimit: 200000,
+        gasPrice: ethers.utils.parseUnits('2', 'gwei')
+      };
+      
+      const wethTx = await wethContract.mint(account, ethers.utils.parseEther('1000'), gasOptions);
+      console.log('WETH铸造交易已发送:', wethTx.hash);
+      
+      const usdcTx = await usdcContract.mint(account, ethers.utils.parseEther('5000000'), gasOptions);
+      console.log('USDC铸造交易已发送:', usdcTx.hash);
 
+      console.log('等待WETH铸造确认...');
       await wethTx.wait();
+      console.log('等待USDC铸造确认...');
       await usdcTx.wait();
 
       console.log('测试代币铸造完成');
@@ -142,12 +153,18 @@ const LiquidityManager = ({ signer, account }) => {
       });
 
       // 调用Manager的mint函数 - 注意参数类型转换
+      const gasOptions = {
+        gasLimit: 500000,
+        gasPrice: ethers.utils.parseUnits('2', 'gwei')
+      };
+      
       const tx = await managerContract.mint(
         CONTRACTS.POOL,
         parseInt(lowerTick),  // 转换为数字
         parseInt(upperTick),  // 转换为数字
         liquidity,
-        callbackData
+        callbackData,
+        gasOptions
       );
 
       setTxHash(tx.hash);

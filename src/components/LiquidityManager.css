@@ -1,28 +1,16 @@
 /* Liquidity Manager Styles */
 .liquidity-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - 200px);
-  padding: 20px;
-  animation: fadeIn 0.5s ease;
+  width: 100%;
+  padding: 0;
+  animation: fadeIn 0.3s ease;
 }
 
 .liquidity-card {
   width: 100%;
-  max-width: 600px;
-  background: rgba(19, 24, 35, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.liquidity-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
 }
 
 /* Header */
@@ -30,14 +18,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 24px 0;
-  margin-bottom: 24px;
+  padding: 1rem 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .liquidity-header h2 {
-  font-size: 24px;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -50,36 +38,52 @@
   background: transparent;
   border: none;
   border-radius: 12px;
-  color: #9CA3AF;
+  color: var(--text-tertiary);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .refresh-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
   transform: rotate(180deg);
 }
 
 /* Pool Info */
 .pool-info {
-  padding: 0 24px 24px;
+  padding: 0 1rem 1rem;
 }
 
-.pool-info h3 {
-  font-size: 16px;
+.info-section h3 {
+  font-size: 1rem;
   font-weight: 500;
-  color: #9CA3AF;
-  margin: 0 0 16px 0;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
 }
 
 .info-grid {
   display: grid;
-  gap: 12px;
-  background: rgba(13, 17, 28, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 16px;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .info-grid {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.info-grid:hover {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .info-grid:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .info-item {
@@ -89,27 +93,27 @@
 }
 
 .info-label {
-  font-size: 14px;
-  color: #9CA3AF;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
 .info-value {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   text-align: right;
 }
 
 /* Balance Section */
 .balance-section {
-  padding: 0 24px 24px;
+  padding: 0 1rem 1rem;
 }
 
 .balance-section h3 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  color: #9CA3AF;
-  margin: 0 0 16px 0;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
 }
 
 .balance-grid {
@@ -122,17 +126,28 @@
 .balance-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: rgba(13, 17, 28, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
+[data-theme="light"] .balance-item {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
 .balance-item:hover {
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(13, 17, 28, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .balance-item:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .token-icon {
@@ -162,14 +177,14 @@
 }
 
 .token-name {
-  font-size: 14px;
-  color: #9CA3AF;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .token-balance {
-  font-size: 16px;
-  color: #ffffff;
+  font-size: 1rem;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -201,15 +216,15 @@
 }
 
 /* Liquidity Parameters */
-.liquidity-params {
-  padding: 0 24px 24px;
+.liquidity-body {
+  padding: 0 1rem 1rem;
 }
 
 .liquidity-params h3 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  color: #9CA3AF;
-  margin: 0 0 16px 0;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
 }
 
 .param-group {
@@ -218,47 +233,65 @@
 
 .param-label {
   display: block;
-  font-size: 14px;
-  color: #9CA3AF;
-  margin-bottom: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
 .param-input {
   width: 100%;
-  padding: 14px 16px;
-  background: rgba(13, 17, 28, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
-  color: #ffffff;
-  font-size: 16px;
+  color: var(--text-primary);
+  font-size: 1rem;
   transition: all 0.3s ease;
   outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .param-input {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .param-input:focus {
-  border-color: rgba(255, 0, 122, 0.5);
-  box-shadow: 0 0 0 3px rgba(255, 0, 122, 0.1);
+  box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2),
+              0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .param-input:hover {
-  background: rgba(13, 17, 28, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .param-input:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .param-input::placeholder {
-  color: #4B5563;
+  color: var(--text-tertiary);
 }
 
 /* Price Range */
 .price-range {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 16px;
-  background: rgba(13, 17, 28, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
   border-radius: 12px;
-  margin-top: 16px;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .price-range {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .price-item {
@@ -268,32 +301,32 @@
 }
 
 .price-label {
-  font-size: 12px;
-  color: #9CA3AF;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
   font-weight: 500;
   text-transform: uppercase;
 }
 
 .price-value {
-  font-size: 14px;
-  color: #ffffff;
+  font-size: 0.875rem;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 /* Add Liquidity Button */
 .add-liquidity-btn {
-  width: calc(100% - 48px);
-  margin: 0 24px 24px;
-  padding: 16px;
-  background: linear-gradient(135deg, #FF007A 0%, #FF3B92 100%);
+  width: 100%;
+  margin: 1rem 0 0;
+  padding: 1rem;
+  background: var(--gradient-primary);
   border: none;
-  border-radius: 16px;
-  font-size: 18px;
+  border-radius: 12px;
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #ffffff;
+  color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 0, 122, 0.3);
+  box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
 }
@@ -315,7 +348,8 @@
 
 .add-liquidity-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 0, 122, 0.4);
+  box-shadow: var(--shadow-lg);
+  opacity: 0.9;
 }
 
 .add-liquidity-btn:active {
@@ -323,19 +357,20 @@
 }
 
 .add-liquidity-btn:disabled {
-  background: #374151;
-  color: #6B7280;
+  background: var(--text-tertiary);
+  color: var(--text-secondary);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+  opacity: 0.5;
 }
 
 /* Transaction Details */
 .tx-details {
-  margin: 0 24px 24px;
-  padding: 16px;
+  margin: 1rem 0;
+  padding: 1rem;
   background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid var(--success-color);
   border-radius: 12px;
   animation: slideIn 0.3s ease;
 }
@@ -344,17 +379,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
-  color: #10B981;
-  font-size: 14px;
+  margin-bottom: 0.5rem;
+  color: var(--success-color);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
 .tx-header button {
   background: none;
   border: none;
-  color: #10B981;
-  font-size: 20px;
+  color: var(--success-color);
+  font-size: 1.25rem;
   cursor: pointer;
   padding: 0;
   width: 20px;
@@ -370,17 +405,18 @@
 }
 
 .tx-link {
-  color: #10B981;
+  color: var(--success-color);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
   transition: gap 0.3s ease;
 }
 
 .tx-link:hover {
-  gap: 8px;
+  gap: 0.5rem;
+  text-decoration: underline;
 }
 
 /* Loading */
@@ -392,9 +428,9 @@
 
 .loading::after {
   content: '';
-  width: 16px;
-  height: 16px;
-  border: 2px solid #ffffff;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--text-primary);
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -432,7 +468,7 @@
 /* Responsive */
 @media (max-width: 640px) {
   .liquidity-container {
-    padding: 16px;
+    padding: 0;
   }
 
   .liquidity-card {

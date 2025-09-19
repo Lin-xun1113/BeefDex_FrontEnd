@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useWeb3 } from './hooks/useWeb3';
 import LiquidityManager from './components/LiquidityManagerNew';
 import SwapComponent from './components/SwapComponentNew';
+import ThemeToggle from './components/ThemeToggle';
+import CursorGlow from './components/CursorGlow';
 import './index.css';
 import './App.css';
+import './styles/responsive.css';
+import './styles/animations.css';
 
 function App() {
   const {
@@ -24,14 +28,29 @@ function App() {
 
   return (
     <div className="app">
+      {/* Cursor Glow Effect */}
+      <CursorGlow />
+      
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
-          <h1 className="app-title">🥩 BeefDex</h1>
-          <p className="app-subtitle">基于 Uniswap V3 的去中心化交易所</p>
+          <div className="header-left">
+            <div className="logo-wrapper">
+              <div className="logo-icon">
+                <span className="logo-emoji">🥩</span>
+                <div className="logo-glow"></div>
+              </div>
+              <div className="logo-text">
+                <h1 className="app-title">BeefDex</h1>
+                <p className="app-subtitle">Premium DeFi Trading</p>
+              </div>
+            </div>
+          </div>
           
-          <div className="wallet-section">
-            {!isConnected ? (
+          <div className="header-right">
+            <ThemeToggle />
+            <div className="wallet-section">
+              {!isConnected ? (
               <button 
                 onClick={connectWallet} 
                 disabled={isLoading}
@@ -68,7 +87,8 @@ function App() {
                   </button>
                 </div>
               </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </header>

@@ -1,0 +1,217 @@
+/* Cursor Glow Effects */
+.cursor-glow,
+.cursor-dot,
+.cursor-trail {
+  pointer-events: none;
+  position: fixed;
+  border-radius: 50%;
+  z-index: 99999;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+/* 主光晕 */
+.cursor-glow {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 69, 19, 0.4) 0%,
+    rgba(255, 107, 59, 0.2) 40%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* 中心点 - 无延迟，即时响应 */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9),
+    rgba(139, 69, 19, 0.8)
+  );
+  box-shadow: 0 0 8px rgba(139, 69, 19, 0.6),
+              0 0 20px rgba(255, 107, 59, 0.4);
+  transition: width 0.1s ease, height 0.1s ease, opacity 0.15s ease;
+}
+
+/* 拖尾效果 - 自然延迟 */
+.cursor-trail {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 59, 0.3) 0%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  opacity: 0.8;
+}
+
+/* 悬停状态 */
+.cursor-glow.pointer {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 59, 0.5) 0%,
+    rgba(139, 69, 19, 0.3) 40%,
+    transparent 70%
+  );
+  filter: blur(10px);
+}
+
+.cursor-dot.pointer {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1),
+    rgba(255, 107, 59, 0.9)
+  );
+  box-shadow: 0 0 12px rgba(255, 107, 59, 0.8),
+              0 0 30px rgba(139, 69, 19, 0.5);
+}
+
+/* 点击状态 */
+.cursor-glow.clicking {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 107, 59, 0.6) 0%,
+    rgba(139, 69, 19, 0.4) 40%,
+    transparent 70%
+  );
+  filter: blur(12px);
+}
+
+.cursor-dot.clicking {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 15px rgba(255, 107, 59, 1),
+              0 0 40px rgba(139, 69, 19, 0.7);
+}
+
+/* 动画 */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* 亮色主题适配 - 使用更深的颜色和更强的对比 */
+[data-theme="light"] .cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(139, 69, 19, 0.6) 0%,
+    rgba(210, 105, 30, 0.4) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: normal;
+  filter: blur(6px);
+}
+
+[data-theme="light"] .cursor-dot {
+  background: radial-gradient(
+    circle,
+    rgba(139, 69, 19, 1),
+    rgba(210, 105, 30, 0.9)
+  );
+  box-shadow: 0 0 10px rgba(139, 69, 19, 0.8),
+              0 0 25px rgba(210, 105, 30, 0.5),
+              inset 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .cursor-trail {
+  background: radial-gradient(
+    circle,
+    rgba(210, 105, 30, 0.4) 0%,
+    transparent 70%
+  );
+  mix-blend-mode: normal;
+}
+
+[data-theme="light"] .cursor-glow.pointer {
+  background: radial-gradient(
+    circle,
+    rgba(139, 69, 19, 0.7) 0%,
+    rgba(255, 140, 0, 0.5) 40%,
+    transparent 70%
+  );
+  filter: blur(8px);
+}
+
+[data-theme="light"] .cursor-dot.pointer {
+  background: radial-gradient(
+    circle,
+    rgba(255, 69, 0, 1),
+    rgba(139, 69, 19, 0.9)
+  );
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.8),
+              0 0 35px rgba(139, 69, 19, 0.6),
+              inset 0 0 3px rgba(255, 255, 255, 0.7);
+}
+
+/* 亮色主题点击效果 */
+[data-theme="light"] .cursor-glow.clicking {
+  background: radial-gradient(
+    circle,
+    rgba(255, 69, 0, 0.8) 0%,
+    rgba(139, 69, 19, 0.5) 40%,
+    transparent 70%
+  );
+}
+
+[data-theme="light"] .cursor-dot.clicking {
+  background: rgba(255, 69, 0, 1);
+  box-shadow: 0 0 20px rgba(255, 69, 0, 1),
+              0 0 40px rgba(139, 69, 19, 0.8);
+}
+
+/* 移动端隐藏 */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-glow,
+  .cursor-dot,
+  .cursor-trail {
+    display: none;
+  }
+}
+
+/* 保留默认鼠标，光晕作为增强效果 */
+/* 如果想要隐藏默认鼠标，取消下面的注释 */
+
+body {
+  cursor: none;
+}
+
+button, a, input, select, textarea, 
+[role="button"], 
+.clickable,
+.tab-button,
+.swap-btn,
+.connect-button,
+.disconnect-button,
+.mint-btn,
+.add-liquidity-btn,
+.token-selector {
+  cursor: none;
+}
+
+
+/* 文本输入时显示默认光标
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  cursor: text;
+} */

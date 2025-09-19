@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ethers } from 'ethers';
 import { CONTRACTS, POOL_ABI, MANAGER_ABI, ERC20_ABI, QUOTER_ABI, TOKENS } from '../contracts';
+import toast from 'react-hot-toast';
+import SkeletonLoader from './SkeletonLoader';
 import './SwapComponent.css';
 
 const SwapComponent = ({ signer, account }) => {
@@ -119,33 +121,47 @@ const SwapComponent = ({ signer, account }) => {
 
       // 授权
       if (swapDirection === 'WETH_TO_USDC') {
+        toast.loading('正在授权 WETH...');
         const approveTx = await wethContract.approve(CONTRACTS.MANAGER, amount);
         await approveTx.wait();
+        toast.success('WETH 授权成功!');
       } else {
+        toast.loading('正在授权 USDC...');
         const approveTx = await usdcContract.approve(CONTRACTS.MANAGER, amount);
         await approveTx.wait();
+        toast.success('USDC 授权成功!');
       }
 
       // 执行交换
+      toast.loading('正在执行交换...');
+      
+      const gasOptions = {
+        gasLimit: 300000,
+        gasPrice: ethers.utils.parseUnits('2', 'gwei')
+      };
+      
       const tx = await managerContract.swap(
         CONTRACTS.POOL,
         zeroForOne,
         amount,
-        callbackData
+        callbackData,
+        gasOptions
       );
 
       setTxHash(tx.hash);
       setShowTxDetails(true);
+      toast.loading(`交易已提交: ${tx.hash.substring(0, 10)}...`);
 
       const receipt = await tx.wait();
       console.log('交换成功!', receipt);
+      toast.success('交换成功!');
 
       await getTokenBalances();
       await getPoolPrice();
       
     } catch (error) {
       console.error('交换失败:', error);
-      alert('交换失败: ' + error.message);
+      toast.error('交换失败: ' + error.message);
     } finally {
       setIsLoading(false);
     }

@@ -1,0 +1,126 @@
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-item {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.skeleton-line {
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: wave 1.5s infinite;
+}
+
+.skeleton-box {
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: wave 1.5s infinite;
+}
+
+@keyframes wave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 特定类型的骨架屏样式 */
+.skeleton-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-balance .skeleton-label {
+  width: 80px;
+  height: 16px;
+}
+
+.skeleton-balance .skeleton-value {
+  width: 120px;
+  height: 24px;
+}
+
+.skeleton-price .skeleton-price-value {
+  width: 150px;
+  height: 28px;
+}
+
+.skeleton-input .skeleton-input-field {
+  width: 100%;
+  height: 50px;
+}
+
+.skeleton-button .skeleton-button-content {
+  width: 100%;
+  height: 48px;
+}
+
+.skeleton-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.skeleton-card .skeleton-title {
+  width: 60%;
+  height: 24px;
+  margin-bottom: 10px;
+}
+
+.skeleton-card .skeleton-subtitle {
+  width: 40%;
+  height: 18px;
+  margin-bottom: 20px;
+}
+
+.skeleton-card .skeleton-content {
+  width: 100%;
+  height: 100px;
+}
+
+/* 亮色主题适配 */
+[data-theme="light"] .skeleton-line,
+[data-theme="light"] .skeleton-box {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.08) 25%,
+    rgba(0, 0, 0, 0.12) 50%,
+    rgba(0, 0, 0, 0.08) 75%
+  );
+  background-size: 200% 100%;
+}
+
+[data-theme="light"] .skeleton-card {
+  background: rgba(0, 0, 0, 0.03);
+}
